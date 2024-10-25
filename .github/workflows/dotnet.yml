@@ -5,9 +5,10 @@ name: supervisor
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - "main"
     paths:
-      - ./supervisor/*
+      - "supervisor/**"
   pull_request:
     branches: ["main"]
 
