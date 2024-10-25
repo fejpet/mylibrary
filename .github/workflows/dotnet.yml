@@ -7,7 +7,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - ./supervisor
+      - ./supervisor/*
   pull_request:
     branches: ["main"]
 
