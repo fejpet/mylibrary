@@ -26,4 +26,6 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
       - name: Build the Docker image
-        run: docker-compose build
+        run: docker build ./supervisor --tag supervisor:$(date +%s)
+      - name: Tag to latest
+        run: docker tag supervisor:$(date +%s) supervisor:latest
