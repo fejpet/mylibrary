@@ -10,7 +10,7 @@ on:
     branches:
       - "main"
     paths:
-      - "$WORKING_DIR/**"
+      - "src/Services/Book/**"
   pull_request:
     branches: ["main"]
 
