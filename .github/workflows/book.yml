@@ -6,6 +6,7 @@ env:
   WORKING_DIR: "src/Services/Book"
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "main"
