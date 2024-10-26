@@ -3,3 +3,7 @@ services:
     build: ./supervisor
     ports:
       - 8000:8080
+  book.api:
+    build: ./src/Services/Book/Book.API
+    ports:
+      - 8001:8080
