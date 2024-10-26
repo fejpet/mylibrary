@@ -3,18 +3,19 @@ namespace Services.Book.API.Controllers;
 using Services.Book.API.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System;
 
 [Route("api/v1/[controller]")]
 [ApiController]
 public class BooksController : ControllerBase
 {
 
-    [Route("{bookNumber:int}")]
+    [Route("{bookNumber}")]
     [HttpGet]
     [ProducesResponseType(typeof(Book), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<Book>> GetBookAsync(int bookNumber)
+    public async Task<ActionResult<Book>> GetBookAsync(string bookNumber)
     {
-        return Ok(new Book("123", "first book", new[] { "szerzo1" }));
+        return Ok(new Book(bookNumber, "first book", new[] { "szerzo1" }));
     }
 
     [HttpGet]
@@ -24,5 +25,12 @@ public class BooksController : ControllerBase
         return Ok(new Book[] { });
     }
 
+    [HttpPost]
+    public async Task<ActionResult<Book>> StoreBookAsync()
+    {
+        //read bytes
+        //call binding
+        return Ok(new Book(Guid.NewGuid().ToString(), "Title", new[] { "szerzo" }));
+    }
 
 }

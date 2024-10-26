@@ -7,3 +7,12 @@ services:
     build: ./src/Services/Book/Book.API
     ports:
       - 8001:8080
+    depends_on:
+      - minio
+  minio:
+    image: docker.io/bitnami/minio:2024
+    ports:
+      - "19000:9000"
+      - "19001:9001"
+    volumes:
+      - "./volumes/minio_data:/bitnami/minio/data"

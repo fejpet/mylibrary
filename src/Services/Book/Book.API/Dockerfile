@@ -14,4 +14,4 @@ WORKDIR /App
 EXPOSE 8080
 ENV ASPNETCORE_HTTP_PORTS=8080
 COPY --from=build-env /App/out .
-ENTRYPOINT ["dotnet", "supervisor.dll"]
+ENTRYPOINT ["dotnet", "book.dll"]
