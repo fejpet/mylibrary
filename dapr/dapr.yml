@@ -1,0 +1,11 @@
+version: 1
+common:
+  resourcesPath: ./components/
+apps:
+  - appID: book-processor
+    appDirPath: ../src/Services/Book/Book.Processor/
+    appPort: 7006
+    command: ["dotnet", "run"]
+  - appID: book-api
+    appDirPath: ../src/Services/Book/Book.API/
+    command: ["dotnet", "run"]
