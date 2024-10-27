@@ -41,7 +41,14 @@ public class BooksController : ControllerBase
     {
         var book = new Book(Guid.NewGuid().ToString(), "Title", new[] { "szerzo" });
         _logger.LogInformation("Book stored, notify others");
-        await _daprClient.PublishEventAsync<Book>("bookpubsub", "books", book);
+
+        var metadata = new Dictionary<string, string>() {
+            { "cloudevent.source", "book.api" },
+            { "cloudevent.id", Guid.NewGuid().ToString() }
+        };
+
+
+        await _daprClient.PublishEventAsync<Book>("bookpubsub", "books", book, metadata);
 
         return Ok(book);
     }
