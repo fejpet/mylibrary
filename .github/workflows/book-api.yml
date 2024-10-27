@@ -3,7 +3,8 @@
 
 name: book
 env:
-  WORKING_DIR: "src/Services/Book"
+  APP_NAME: "book.api"
+  WORKING_DIR: "src/Services/Book/Book.API"
 
 on:
   workflow_dispatch:
@@ -11,7 +12,7 @@ on:
     branches:
       - "main"
     paths:
-      - "src/Services/Book/**"
+      - "src/Services/Book/Book.API/**"
   pull_request:
     branches: ["main"]
 
@@ -34,6 +35,6 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
         working-directory: ${{env.WORKING_DIR}}
-      - name: Build the Book.API image
-        run: docker build . --tag book.api:$(date +%s)
-        working-directory: ${{env.WORKING_DIR}}/Book.API
+      - name: Build the ${{env.APP_NAME}} image
+        run: docker build . --tag ${{env.APP_NAME}}:$(date +%s)
+        working-directory: ${{env.WORKING_DIR}}
